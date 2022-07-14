@@ -1,0 +1,851 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{book}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Onboarding Manual},
+  pdfauthor={Ben Charoenwong},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\usepackage[normalem]{ulem}
+% Avoid problems with \sout in headers with hyperref
+\pdfstringdefDisableCommands{\renewcommand{\sout}{}}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\usepackage{booktabs}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage[]{natbib}
+\bibliographystyle{plainnat}
+
+\title{Onboarding Manual}
+\author{Ben Charoenwong}
+\date{2022-07-14}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{1}
+\tableofcontents
+}
+\hypertarget{preface}{%
+\chapter*{\texorpdfstring{\textbf{Preface}}{Preface}}\label{preface}}
+\addcontentsline{toc}{chapter}{\textbf{Preface}}
+
+Welcome to this onboarding manual! Please use this manual to facilitate and familiarize yourself with the different aspects of our group as you start your journey with us. This manual will cover the different skills, roles, and responsibilities that is expected of you as a Research Assistant (RA) or a Research Volunteer (RV). This manual will also inform you of the norms and culture of our group, covering aspects from communication etiquette to the schedules of different administrative issues (e.g., meetings, updates), and data/project management (e.g., data wrangling, analyses, data storage).
+
+Themes Credit:
+
+Xie, Y. (2022). bookdown: \emph{Authoring books and technical documents with R Markdown.} Retrieved from \url{https://bookdown.org/yihui/bookdown/}
+
+\hypertarget{introduction}{%
+\chapter{\texorpdfstring{\textbf{Introduction}}{Introduction}}\label{introduction}}
+
+\%any positive looking group photos?\%
+
+\hypertarget{best-practices-and-culture}{%
+\section{Best Practices and Culture}\label{best-practices-and-culture}}
+
+This manual curates different best practices from different resources that aim to improve our organization, management, and productivity for each project. The information is supposed to be general but comprehensive enough for new and existing members to refer to. Therefore, when you are uncertain about certain tasks, do refer to this manual for help as there should be some useful resources available.
+
+You are also encouraged to familiarize yourself on how projects are documented (found here \ref{folder-structuring}), collaborated, and prepared for presentations and meetings (found here \ref{meeting-preparations-and-follow-ups}).
+
+\hypertarget{data-rights-and-analyses-procedures}{%
+\section{Data Rights and Analyses Procedures}\label{data-rights-and-analyses-procedures}}
+
+You are recommended to read the \textbf{Manual for Data Usage {[}prof ben do advise if something like this exists?{]}} which informs the fair usage of databases and datasets that you are given access to. This is important as these data sources are usually copyrighted and there would be usage guidelines which should be noted. Particularly, we should cite these information when we use them in our research.
+
+You are also recommended to read: \href{https://web.stanford.edu/~gentzkow/research/CodeAndData.pdf}{Code and Data for the Social Sciences: A Practitioner's Guide}, which is a guide on how to code and to work with data that is referred to by many different research groups. Even if you are totally new to research, this guide should prove useful as it exposes you to the practices on data and coding for the research projects you will take on.
+
+While there are references to different statistical softwares and coding techniques, you shouldn't need to ``memorize'' them. Instead, you should understand the logic on how and why the codes are annotated or written in certain manner or why certain descriptive statistics are performed first to facilitate the data cleaning process (e.g., min-max for abnormal data or outlier) before the data is analyzed.
+
+\hypertarget{other-resources}{%
+\section{Other Resources}\label{other-resources}}
+
+Besides the recommended practices in this group, there will also be several external links to supplement and to inform how other research groups are performing their research. This should expose you to a wider scope of information in a research setting, benefiting your stay with us.
+
+Although there will be some discretion in each person's preferred methods/workflow, we still expect you to read this onboarding manual carefully and to apply the information here as much as possible. If you have suggestions to refine and improve the current structure, we are happy to improve on this manual, with you.
+
+\hypertarget{external-resources}{%
+\section{External Resources:}\label{external-resources}}
+
+\begin{itemize}
+\item
+  \url{https://raguide.github.io/} (what is an RA, and what should RAs do?)
+\item
+  Please feel free to add any additional resources as needed.
+\end{itemize}
+
+\hypertarget{communication-and-etiquette}{%
+\chapter{\texorpdfstring{\textbf{Communication and Etiquette}}{Communication and Etiquette}}\label{communication-and-etiquette}}
+
+Communication is important for knowledge transmission. It is essential to know how to communicate well (and politely) especially in the domain of knowledge development. Besides having the know-hows on data management, being able to communicate your questions and findings to others clearly is equally important. This is why you should take time to craft your emails and other communications carefully.
+
+\hypertarget{overview}{%
+\section{Overview}\label{overview}}
+
+This chapter will cover examples and guidelines for emailing and communicating with me or other colleagues for work purposes. While there is no hierarchy per se, I would appreciate if you understand that most of the communications here are task-oriented rather than for leisure purposes.
+
+Hence, please communicate in a way that demonstrates professionalism. It should be clear that something such as, ``5pm, onz?'', is overly-casual for a meeting confirmation without much thoughtful content (e.g., location to meet). Instead, something such as, ``Hey Ben, would it be okay to having a quick chat at 5pm later on Zoom?'' would be much preferred.
+
+\hypertarget{scheduling}{%
+\section{Scheduling}\label{scheduling}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  If you are looking to schedule an appointment with me, I would try to respond within 12 hours to acknowledge and to confirm whether I can make it for the stipulated time. If you do not receive anything after 12 hours, then it is likely I have missed your message.
+\item
+  In this case, please send me a reminder. In the event that I also missed the reminder (which rarely happens), please send me a reminder again. I will address them as soon as I can.
+\item
+  Unless otherwise stated, all members should try to respond within 12 hours as well to facilitate the progress in each research projects.
+\end{enumerate}
+
+\hypertarget{email-etiquette}{%
+\section{Email Etiquette}\label{email-etiquette}}
+
+\textbf{When drafting an email, Please take note of the following:}
+
+\includegraphics[width=4.51042in,height=\textheight]{communication_map.png}
+
+\textsubscript{\textsc{\emph{Shannon~\&~Weaver~Model~of~Communication}}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \emph{Audience}: Are you addressing it to only me or are those being CC-ed also required to attend to the information? When possible, make it explicit on who should be responding to your emails. Sometimes, individuals who are CC-ed might think that the email is only for information and might not act on them unless stated in the email. Hence, it is helpful to be direct and state what you need from them (e.g., Could Alex provide more information on this dataset?).
+\item
+  \emph{Purpose}: What is the purpose of this email? To inform, to clarify information, to deliver outputs, or to seek resources? Always send an email with context to reduce incorrect interpretation. It is always better to over-describe than to under-describe the context. It also helps to be succinct and clear.
+\item
+  \emph{Attachments:} Please ensure that your attachments are working. You can test this by accessing your link with a separate browser before sending the email. This would reduce the amount of back-and-forth emailing due to dead links.
+\item
+  \emph{Have a Signature:}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Put your name, your title, and link to your website or repo if you have any. This helps to create a professional image as well.
+  \end{itemize}
+\end{enumerate}
+
+\textbf{When responding to emails:}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Use your professional account if possible (e.g., your NUS account).
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Since most of the correspondence via email will be work-related, pick one that you check regularly. We want to avoid the situation of, ``sorry I didnt check my account XX for a long time as that is my other account''. This creates additional hassles to projects.
+  \end{itemize}
+\item
+  When possible, respond to your emails even if its simply saying, I acknowledge. This lets the sender know that their emails have been received.
+\item
+  Respond with complete thoughts and with contextual information whenever possible. This will greatly help your receiver understand what you want to convey.
+\end{enumerate}
+
+\hypertarget{email-examples}{%
+\subsection{Email Examples}\label{email-examples}}
+
+\% good email example \%
+
+\% bad email example \%
+
+\hypertarget{other-text-communications-tools}{%
+\section{Other Text Communications Tools}\label{other-text-communications-tools}}
+
+We might make use of other platforms such as Whatsapp and Slack besides email if its to confirm something simple. Although it is reasonable to be a bit more casual on these platform, it is still important to be respectful and to have some levels of formality.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Slack. In case you are unfamiliar with slack, you can refer to the following links for some ideas on what it is and how to use it.
+
+  \begin{itemize}
+  \item
+    Our Slack link?
+  \item
+    \url{https://slack.com/help/articles/115004071768-What-is-Slack-}
+  \item
+    \url{https://www.getcloudapp.com/blog/what-is-slack/}
+  \item
+    \url{https://www.youtube.com/watch?v=RRxQQxiM7AA}
+  \end{itemize}
+\item
+  Whatsapp. Whatsapp should be something that is familiar for everyone. But just in case you are unfamiliar, here are some resources as well.
+
+  \begin{itemize}
+  \item
+    \url{https://www.youtube.com/watch?v=fjVlDYu6erU}
+  \item
+    \url{https://www.businessinsider.com/what-is-whatsapp-guide}
+  \end{itemize}
+\item
+  Asana
+
+  \begin{itemize}
+  \item
+    \url{https://asana.com/guide/videos/new-user-experience}
+  \item
+    \url{https://www.youtube.com/watch?v=uCDftAtr9tI}
+  \item
+    \url{https://www.youtube.com/watch?v=bHaJ4asIlQA}
+  \end{itemize}
+\end{enumerate}
+
+\hypertarget{external-resources-1}{%
+\section{External Resources}\label{external-resources-1}}
+
+\begin{itemize}
+\tightlist
+\item
+  \url{https://imccart.github.io/phd-workshop-content/etiquette/emails.html\#6}
+\end{itemize}
+
+\hypertarget{culture-and-expectations}{%
+\chapter{\texorpdfstring{\textbf{Culture and Expectations}}{Culture and Expectations}}\label{culture-and-expectations}}
+
+\hypertarget{professional-rules}{%
+\section{Professional Rules}\label{professional-rules}}
+
+Its important that we carry ourselves professionally and three simple rules adopted from \href{https://phdworkshop.classes.ianmccarthyecon.com/etiquette/}{McCarthy, 2020} can help us with that.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Give others the benefit of the doubt}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Sometimes, interesting coincidences can occur and we should always give others the benefit of doubt, at least for the first few occurrences.
+
+    \begin{itemize}
+    \tightlist
+    \item
+      For example, during Covid-19, I had a student whom had to delay his submission for a month because his parents contracted Covid-19 one after another and that resulted in 4 weeks of home quarantine for him!
+    \end{itemize}
+  \end{itemize}
+\item
+  \textbf{Always assume you made the mistake until proven otherwise}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Although it might be easier to point fingers, it is usually more helpful to just assume that the mistake has been made (without assigning blames) and to examine ways to resolve it. Afterall, the end goal is to resolve challenge and making mistakes are a part of this process.
+  \end{itemize}
+\item
+  \textbf{Respect others' time}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Just as how our time is precious, others' time are equally precious as well. If you have made a commitment to someone for a meeting or a task deadline, always do your best to meet it. If in the midst of performing the task you realize you cannot make it, always ask for an extension as early as you can. More often than not, this will give yourself and others more time to react.
+  \end{itemize}
+\end{enumerate}
+
+\hypertarget{culture}{%
+\section{Culture}\label{culture}}
+
+Culture is essentially the shared assumptions, values, and norms that we have as a group. We hope to create a collaborative and supportive culture that allows everyone to voice their opinions easily.
+
+Some work habits/values/practices are:
+
+\begin{itemize}
+\item
+  \textbf{Treating yourself and others with respect.}
+
+  \begin{itemize}
+  \item
+    Besides respecting others, voice out whenever you feel that you are getting a disproportionate amount of work or if you cannot cope with your work demands. Being on the assigner's end, sometimes we may not have the full optics, especially with regards to your contextual challenges. So please let us know when you need more time or help.
+  \item
+    \textless additional values/practices?\textgreater{}
+  \item
+    Here is a list of ex-interns and RAs that have worked with me. Feel free to contact them and ask for a review of how working in this group is like before joining us or deciding what you want to do in this group.
+  \end{itemize}
+\item
+  \textbf{Maintain regular contact with your colleagues}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Feel free to say hi when you wish to unwind. Interacting with colleagues are when most interesting research ideas are bounced around!
+  \end{itemize}
+\item
+  \textless any more?\textgreater{}
+\end{itemize}
+
+\hypertarget{expectations}{%
+\section{\texorpdfstring{\emph{Expectations}}{Expectations}}\label{expectations}}
+
+As a research assistant, intern, or volunteer, there are expectations to be met.
+
+\begin{itemize}
+\item
+  \textbf{Keeping Organized}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    There are often many different steps to take in a research projects, and we do need to rely on you to keep track of your own work progress and occasionally remind us of these intermediary deadlines, to-dos, and submissions deadlines. Hence, you need to be organized to keep abreast of these matters.
+  \end{itemize}
+\item
+  \textbf{Self-driven}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Because much of research is unstructured, we do expect you to be self-driven in wanting to find out more or to ask questions that can help unravel the data better. Since many of us are also usually handling several projects, we do need you to be self-driven in finding answers instead of waiting for us to poke you for updates.
+  \end{itemize}
+\item
+  \textbf{Integrity}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    A lot of times, you have the freedom to do a lot of things. This can apply to how much time you work, what you do to the data, and what you want to report. For example, you could selectively extract data for analysis and we wouldnt know unless we redo or rewrite another set of code to check. Hence, we hope that you will perform your task with the highest integrity because the last thing we want is to report findings that are inaccurate.
+  \end{itemize}
+\item
+  Any more expectations?
+\end{itemize}
+
+\hypertarget{external-resources-2}{%
+\section{External Resources}\label{external-resources-2}}
+
+\begin{itemize}
+\tightlist
+\item
+  \url{https://phdworkshop.classes.ianmccarthyecon.com/etiquette/}
+\item
+  \url{https://raguide.github.io/reqs/}
+\end{itemize}
+
+\hypertarget{meeting-preparations-and-follow-ups}{%
+\chapter{\texorpdfstring{\textbf{Meeting Preparations and Follow-ups}}{Meeting Preparations and Follow-ups}}\label{meeting-preparations-and-follow-ups}}
+
+In each meeting, there is likely a large amount of information that you will be transmitting and for you to follow-up on. Therefore, you should bring along something that helps you to note down all these information so you can follow-up on them after the meeting.
+
+Some things to keep in mind for meetings:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Be punctual and prepared.}
+
+  \begin{itemize}
+  \item
+    If you are expected to be at the meeting, please be on time and do not keep others waiting unless you have a very good reason. Even so, please inform others that you will be late so other agendas can happen first.
+  \item
+    If you are presenting, please come earlier to ensure that all equipment and slide decks are working as per your expectations. There is usually no time to manage technical difficulties and we do not want to prolong meetings unnecessarily.
+  \end{itemize}
+\item
+  \textbf{Have writing materials with you}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    It is likely that you need to do something after the meeting (e.g., send information to others, follow-up on requests). Bring along something to note things down and set deadlines. If someone is consolidating meeting minutes, it might be good to provide these deadline information to people who are relevant to the project so everyone can be on the same page.
+  \end{itemize}
+\item
+  \textbf{Engage and discuss respectfully}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Speak up (respectfully). In a meeting, it would be good to clarify and to challenge points that may not seem to be reasonable to you. However, please keep things relevant, and if time does not permit, engaging in discussion after meetings with the colleague is also an useful alternative.
+  \end{itemize}
+\item
+  \textbf{Give attention}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Listen attentively when others are presenting. As much as possible keep off your phones and other stuff on your laptop unless you are writing down relevant points to ask later or for follow-ups.
+  \item
+    If this is a 1-1 meeting, you should also not be distracted by other mediums. Moreover, you should give your inputs as we go through the meeting agendas together.
+  \end{itemize}
+\end{enumerate}
+
+\hypertarget{external-resources-3}{%
+\section{External Resources}\label{external-resources-3}}
+
+\url{https://imccart.github.io/phd-workshop-content/etiquette/meetings.html\#4}
+
+\hypertarget{folder-structuring}{%
+\chapter{\texorpdfstring{\textbf{Folder Structuring}}{Folder Structuring}}\label{folder-structuring}}
+
+Having the same folder structure across the group is useful because this allows other members to easily find the information that they need. Moreover, having such practices will help you to be more organized as well.
+
+For the data and information, we primarily use these folder headers.
+
+\hypertarget{folder-headers}{%
+\section{Folder Headers}\label{folder-headers}}
+
+Here is a breakdown/guide for what information should go into which folder:
+
+\begin{itemize}
+\item
+  admin - Information regarding project-related expenses, progress report, and generally anything administrative should come here.
+\item
+  analysis - Analysis codes, outputs, and write-ups of those analyses should come here.
+\item
+  build - Raw data and data codes for data wrangling of each project should come under here.
+\item
+  lit - Literature review, articles, and any relevant reports or information for the project.
+\item
+  notes - Meeting minutes, agenda, communications, or other relevant notes can come here.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Note that this should not include any personal notes unless you feel that it is relevant to be shared among the group.
+  \end{itemize}
+\item
+  paper - Working papers or drafts should come here. Presentations of those papers can also be placed here
+\item
+  proposal - Information on proposals for grants, IRBs, or any research proposal and ideas.
+\item
+  templates - Templates for report, tables, figures, or any other documents that would benefit from having a report should come here.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Checklists that are used should come here.
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{external-resources-4}{%
+\section{External Resources}\label{external-resources-4}}
+
+\begin{itemize}
+\tightlist
+\item
+  \url{https://github.com/gslab-econ/ra-manual/wiki/Data}
+\end{itemize}
+
+\hypertarget{coding-know-hows}{%
+\chapter{\texorpdfstring{\textbf{Coding Know-Hows}}{Coding Know-Hows}}\label{coding-know-hows}}
+
+Gaining experience in a research setting will mean dealing with many different datasets. This usually means that you will be wrangling with data and analyzing them in a team, which requires you to code and annotate in a way that others can understand. Often, codes are read more than they are written. That is why it is important to ensure that people can understand and replicate what you've done. Hence, its better to over-annotate than to under-annotate. Never assume that people will understand what you have written. In fact, many people forget what or why they wrote their code in a certain manner after they return to the project from a short month! Therefore, annotate!
+
+As a guide, you may refer to the following resources for coding in the different languages. Primarily, we use R and python, but sometimes, we may also leverage on other tools.
+
+Learning how to write readable and intelligent code will benefit you not only in this group but also in the industry as well. Please refer to the following as a frame of reference.
+
+\hypertarget{general-guidelines-to-code}{%
+\section{\texorpdfstring{\emph{General Guidelines to Code}}{General Guidelines to Code}}\label{general-guidelines-to-code}}
+
+\hypertarget{r-coding-style}{%
+\section{\texorpdfstring{\emph{R Coding Style}}{R Coding Style}}\label{r-coding-style}}
+
+\begin{itemize}
+\item
+  \url{https://bookdown.org/ndphillips/YaRrr/who-is-this-book-for.html}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    if this is your first time using R, this is a useful guide for you with regards to installing R, its packages, and loading them.
+  \item
+    There are also some examples and tasks useful for getting acquainted with data wrangling. dplyr (part of the tidyverse package) is the go-to for many R users.
+  \end{itemize}
+\item
+  \href{https://style.tidyverse.org/}{Tidyverse style guide}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    While there are many different R coding styles, the tidyverse guide is one that is widely used.
+  \item
+    Annotate as much as you can, the top of the script should tell what the scripts ideally do (i.e., no errors encountered when executed), and whenever possible, explain why certain steps or packages are called.
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{r-packages}{%
+\subsection{R Packages}\label{r-packages}}
+
+There are some packages which we recommend you to at least have in your R. You can simply install them by typing,
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# install.package("packagename")}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\item
+  tidyverse (for data wrangling)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    ggplot2, dplyr, stringr, texreg, lubridate are some of the powerful packages inside
+  \end{itemize}
+\item
+  foreign or rio (for importing and export data)
+\item
+  psych (useful for getting descriptive statistics such as mean, sd)
+\end{itemize}
+
+\hypertarget{python-coding-style}{%
+\section{\texorpdfstring{\emph{Python Coding Style}}{Python Coding Style}}\label{python-coding-style}}
+
+\begin{itemize}
+\item
+  \url{https://about.gitlab.com/blog/2021/10/21/beginner-guide-python-programming/}
+
+  \begin{itemize}
+  \item
+    If this is your first time using python, gitlab has a good guide on installing and the basics of python.
+  \item
+    Please note that python is release in two version, Python 2 and Python 3. Generally, most people are using Python 3 and Python 2 are only used when there are compatibility issues to consider.
+  \end{itemize}
+\item
+  \url{https://learnpythonthehardway.org/python3/}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    There are many resources online for learning python. Here is one of them, however, you do not need to refer to this and you can always use something or learn from something that you prefer.
+  \end{itemize}
+\item
+  Once you get the hang of it, you may move on to choose different IDEs that you prefer. Some of the popular ones include, Visual Code Studio, Jupyter Notebook, PyCharm.
+\item
+  \url{https://docs.python-guide.org/} \& \url{https://google.github.io/styleguide/pyguide.html}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    While there are many different python coding styles as well, here are some you can refer to as a guide.
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{python-packages}{%
+\subsection{Python Packages}\label{python-packages}}
+
+There are some packages which we recommend you to at least have in python by typing in command line.
+
+In the command prompt, you could type:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# python {-}m pip install pandas}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\item
+  pandas, numpy: Both are good for data wrangling and data manipulation
+\item
+  matplotlib, seaborn, and ggplot: These are good for data visualization.
+\end{itemize}
+
+\hypertarget{any-other-languages-used}{%
+\section{Any other languages used?}\label{any-other-languages-used}}
+
+\hypertarget{external-resources-5}{%
+\section{External Resources}\label{external-resources-5}}
+
+\begin{itemize}
+\tightlist
+\item
+  \url{https://github.com/gslab-econ/ra-manual/wiki/Python}
+\item
+  \url{https://github.com/gslab-econ/ra-manual/wiki/R}
+\end{itemize}
+
+\hypertarget{literature-review}{%
+\chapter{\texorpdfstring{\textbf{Literature Review}}{Literature Review}}\label{literature-review}}
+
+Before performing any research, we need to ask, what are people interested in or what is a gap in the current research? A good way to know this is to read the \uline{\textbf{research literature}} and \uline{\textbf{current news}}, which can motivate research questions and guide findings that are valuable for adding knowledge or solving problems in the field.
+
+\hypertarget{search-engines}{%
+\section{Search Engines}\label{search-engines}}
+
+Regardless which institutions you are from, you should have access to search engines that are build specifically for finding literature and other academic resources.
+
+While there are many different search engines for data and information, here are some that would be helpful to start your search on.
+
+\begin{itemize}
+\tightlist
+\item
+  \href{https://scholar.google.com/}{Google Scholar}
+\item
+  Web of Science
+\item
+  Scopus
+\item
+  SSRN
+\item
+  Proquest
+\end{itemize}
+
+\hypertarget{recommended-journals}{%
+\section{Recommended Journals}\label{recommended-journals}}
+
+Here are a list of journals which are worth deep-diving into to understand topics and questions that are asked in this group:
+
+\begin{itemize}
+\tightlist
+\item
+\end{itemize}
+
+\hypertarget{recommended-news-sources}{%
+\section{Recommended News Sources}\label{recommended-news-sources}}
+
+\hypertarget{external-resources-6}{%
+\section{External Resources}\label{external-resources-6}}
+
+\hypertarget{data-analyses-and-visualization}{%
+\chapter{\texorpdfstring{\textbf{Data Analyses and Visualization}}{Data Analyses and Visualization}}\label{data-analyses-and-visualization}}
+
+Before running any analyses (e.g., regressions), we need to ensure that the data we have is cleaned and free from any errors to our best abilities.
+
+Importantly, we should never work directly on the master file. We should always clean the data using a copied set so that we do not lose the original data if we accidentally overwrite something. Hence, always create a copy and work on that copy instead of the raw master data.
+
+\hypertarget{checklist-for-data-wrangling}{%
+\section{\texorpdfstring{\emph{Checklist for Data Wrangling} }{Checklist for Data Wrangling }}\label{checklist-for-data-wrangling}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Check descriptive statistics for any abnormalities.
+
+  \begin{itemize}
+  \item
+    Some common errors:
+
+    \begin{itemize}
+    \item
+      Missing data
+    \item
+      Data that is not in range for variable (e.g., -10 for age)
+    \item
+      Outliers
+    \item
+      Unreadable data or incomplete reading of data
+    \end{itemize}
+  \end{itemize}
+\item
+  Plot histograms, time series plot, or any other plots that are helpful to ``eyeball'' for weird occurrences or unexpected patterns.
+\item
+  Check that your data fits the properties required for running the required analytic tests.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    e.g., If your outcome variable is binary, then maybe consider running logistic regression over a linear regression.
+  \end{itemize}
+\end{enumerate}
+
+\hypertarget{checklist-for-analysis}{%
+\section{\texorpdfstring{\emph{Checklist for Analysis}}{Checklist for Analysis}}\label{checklist-for-analysis}}
+
+If your data has been properly cleaned, you can move on to determine what analysis technique would be helpful for answering your research question.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Examine what analysis techniques should be used and if your data allows the analysis to be performed.
+
+  \begin{itemize}
+  \item
+    Some common techniques:
+
+    \begin{itemize}
+    \item
+      Regressions
+    \item
+      ANOVA
+    \item
+      Multi-level modelling
+    \item
+    \end{itemize}
+  \end{itemize}
+\item
+  Consider if there is a need to control any variables in your analyses.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Commonly controlled factors could be gender, age etc.
+  \item
+    You may also have other relevant variables that should be controlled for in the analyses based on your research questions.
+  \end{itemize}
+\item
+  Interpret your outputs and what does it mean in relation to the research question? For example, what does it mean when you have a negative regression coefficient?
+\end{enumerate}
+
+\hypertarget{checklist-for-data-visualization}{%
+\section{\texorpdfstring{\emph{Checklist for data visualization}}{Checklist for data visualization}}\label{checklist-for-data-visualization}}
+
+Finally, when you are satisfied with your analyses, create visually appealing plots with R or python. For both softwares, there are many packages out there which helps you to perform these ( see \ref{general-guidelines-to-code} for some packages).
+
+When we are preparing for publication, we might use LaTeX for plotting. LaTeX is helpful because there are existing templates that are used for publications. For example, \href{https://www.aeaweb.org/journals/aej/styleguide}{AEA} has templates for publications and table/figure formatting. One popular LaTeX tool is Overleaf:
+
+\begin{itemize}
+\tightlist
+\item
+  You should always export your visualizations in a high quality format such as EPS or PDF. To allow others to reproduce your visualization, you should specify as many details (e.g., size, resolution) as possible.
+\end{itemize}
+
+\hypertarget{external-resources-7}{%
+\section{External Resources}\label{external-resources-7}}
+
+\begin{itemize}
+\item
+  Data Visualization
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \url{https://www.jstor.org/stable/43193723?seq=8\#page_scan_tab_contents}
+  \end{itemize}
+\item
+  Latex:
+
+  \begin{itemize}
+  \item
+    \url{https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes}
+  \item
+    \url{https://github.com/naecker-lab/lab-manual/wiki/LaTeX}
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{misc-important-information}{%
+\chapter{\texorpdfstring{\textbf{Misc Important Information}}{Misc Important Information}}\label{misc-important-information}}
+
+\hypertarget{tools}{%
+\section{\texorpdfstring{\textbf{Tools}}{Tools}}\label{tools}}
+
+Over at our group, we have a few other communication tools besides the usual emails and zoom.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  {[}\#Placeholder{]}
+\item
+  {[}\#Placeholder{]}
+\end{enumerate}
+
+\hypertarget{frequently-asked-questions}{%
+\section{\texorpdfstring{\textbf{Frequently Asked Questions}}{Frequently Asked Questions}}\label{frequently-asked-questions}}
+
+Here are also FAQs that you may have:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  How do I get paid if I am a paid RA?
+\end{enumerate}
+
+  \bibliography{book.bib,packages.bib}
+
+\end{document}
